@@ -2,7 +2,10 @@
 
 ## Descripción del proyecto
 
-Este proyecto fue desarrollado como parte del curso de Angular, correspondiente al Módulo 1 - Unidad 1.
+Este proyecto fue desarrollado como parte del curso de Angular. 
+En los siguientes modulos, se estudian los siguientes temas:
+
+Módulo 1 - Unidad 1.
 
 El objetivo de la actividad fue comprender el flujo básico de trabajo en Angular utilizando Angular CLI, explorando la estructura principal del proyecto, modificando componentes y aplicando código de variables en la vista.
 
@@ -11,6 +14,15 @@ La aplicación incluye:
 - Información personal del estudiante.
 - Uso de código de datos.
 - Inclusión de imágenes mediante la carpeta assets.
+
+Módulo 1 - Unidad 
+
+Objetivo: Utiliza directivas estándar, directivas de atributos y el sistema de formularios reactivos en Angular, aplicando validaciones y estilos dinámicos.
+
+Trabajo: 
+  - Crear un nuevo componente llamado registro.
+  - En la plantilla, incluir un título y un breve texto descriptivo sobre el formulario.
+  - Implementación del formulario reactivo con FormBuilder y validaciones configuradas.
 
 ---
 
@@ -70,6 +82,10 @@ Módulo principal de Angular donde se registran componentes y módulos utilizado
 ## assets/
 
 Carpeta utilizada para almacenar recursos estáticos como imágenes, íconos y archivos adicionales.
+
+## components/
+
+Carpeta que contiene los componentes. Por ej. Registro.
 
 ## environments/
 

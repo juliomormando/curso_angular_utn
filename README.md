@@ -15,7 +15,7 @@ La aplicación incluye:
 - Uso de código de datos.
 - Inclusión de imágenes mediante la carpeta assets.
 
-Módulo 1 - Unidad 
+Módulo 1 - Unidad 2.
 
 Objetivo: Utiliza directivas estándar, directivas de atributos y el sistema de formularios reactivos en Angular, aplicando validaciones y estilos dinámicos.
 

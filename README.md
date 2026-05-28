@@ -117,6 +117,14 @@ Luego se mostró en la vista utilizando interpolación:
 
 ![interpolación](screenshots/interpolacion.png)
 
+## Ejemplo del formulario 
+
+![interpolación](screenshots/formulario.png)
+
+## Ejemplo de validacion del formulario
+
+![interpolación](screenshots/formulario_err.png)
+
 ---
 
 # Instrucciones para ejecutar el proyecto

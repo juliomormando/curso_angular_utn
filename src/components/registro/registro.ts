@@ -24,6 +24,7 @@ export class Registro {
   enviar(){
     if (this.formulario.valid) {
       console.log(this.formulario.value);
+      this.formulario.reset();
     }
     else {
       console.log('Completar los datos del formulario')

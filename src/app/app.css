@@ -1,0 +1,91 @@
+  :host {
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+
+    --orange-red: oklch(63.32% 0.24 31.68);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+
+    --gradient-vertical: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --gradient-horizontal: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    font-family: "Inter", -apple-system, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    height: 100dvh;
+  }
+
+  main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center; /* Centrado para mejor estética */
+    align-items: center;
+    padding: 2rem;
+    box-sizing: inherit;
+  }
+
+  .content {
+    display: flex;
+    align-items: stretch; /* Estira los lados para que midan lo mismo de alto */
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px; /* Un poco más ancho para albergar el formulario cómodamente */
+    gap: 1.5rem;
+  }
+
+  /* Distribución equitativa para ambos lados */
+  .left-side, .right-side {
+    flex: 1;
+    width: 50%;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--gray-900);
+    font-weight: 500;
+    margin: 1.5rem 0 0 0;
+  }
+
+  p {
+    margin: 0 0 1rem 0;
+    color: var(--gray-700);
+  }
+
+  /* Divisor Visual (Borde intermedio) */
+  .divider {
+    width: 2px;
+    background: var(--gradient-vertical);
+    align-self: stretch;
+  }
+
+  /* Adaptación para pantallas móviles */
+  @media screen and (max-width: 650px) {
+    .content {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .left-side, .right-side {
+      width: 100%;
+    }
+
+    .divider {
+      height: 2px;
+      width: 100%;
+      background: var(--gradient-horizontal);
+      margin-block: 1.5rem;
+    }
+  }

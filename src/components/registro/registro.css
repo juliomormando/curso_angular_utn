@@ -1,3 +1,56 @@
-input.ng-invalid.ng-touched{
-  border-color: red;
-}
+  /* El contenedor del formulario se alinea en vertical */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espacio uniforme entre cada sección del formulario */
+    max-width: 100%;
+  }
+
+  /* Contenedor para la estructura de inputs y mensajes */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem; /* Espacio corto entre el input y su mensaje de error */
+  }
+
+  /* Estilizado básico para que los inputs se vean profesionales y ocupen todo el ancho */
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Evita que el padding sume tamaño extra al ancho */
+  }
+
+  input:focus {
+    border-color: var(--vivid-pink, #6902d7); /* Usa el color rosa de tus variables si existe */
+    outline: none;
+  }
+
+  /* Estilos para los mensajes de error */
+  small {
+    color: #e53935; /* Rojo de alerta */
+    font-size: 0.85rem;
+    margin-left: 0.2rem;
+  }
+
+  /* Estilizado para el botón */
+  button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: var(--gray-900, #1a1a1a);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  input.ng-invalid.ng-touched{
+    border-color: red;
+  }

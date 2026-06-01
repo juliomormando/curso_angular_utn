@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "nombre": "Leche Descremada",
+    "descripcion": "Leche de vaca pasteurizada y descremada.",
+    "fecha_vencimiento": "2026-06-15T00:00:00.000Z",
+    "precio": 1.20,
+    "descuento": 5
+  },
+  {
+    "id": 2,
+    "nombre": "Pan Integral",
+    "fecha_vencimiento": "2026-06-05T00:00:00.000Z",
+    "precio": 2.50,
+    "descuento": 0
+  },
+  {
+    "id": 3,
+    "nombre": "Yogur Griego",
+    "descripcion": "Yogur natural sin azúcar añadida.",
+    "fecha_vencimiento": "2026-06-25T00:00:00.000Z",
+    "precio": 1.80,
+    "descuento": 10
+  }
+]

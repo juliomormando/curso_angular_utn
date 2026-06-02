@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 import { Registro } from '../components/registro/registro';
 import { ListarProducto } from '../components/producto/listar/listar';
+import { FormularioProducto } from '../components/producto/formulario/formulario';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { ListarProducto } from '../components/producto/listar/listar';
   imports: [
     RouterOutlet,
     Registro,
-    ListarProducto
+    ListarProducto,
+    FormularioProducto
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

@@ -1,24 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Producto } from '../../models/producto';
 import { HttpClient } from '@angular/common/http';
+import { Producto } from '../../models/producto';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-
 export class ProductoService {
-  private jsonUrl = 'assets/data/producto.json'
 
-  constructor(private productoLista: HttpClient){};
+  private jsonUrl = 'assets/data/producto.json';
 
-  listar(){
-    return this.productoLista.get<Producto[]>(this.jsonUrl);
+  private productosSubject = new BehaviorSubject<Producto[]>([]);
+  productos$ = this.productosSubject.asObservable();
 
+  constructor(private http: HttpClient) {}
+
+
+  cargarProductos(): void {
+    this.http.get<Producto[]>(this.jsonUrl).subscribe(data => {
+      this.productosSubject.next(data);
+    });
   }
 
-  crear(producto:Producto){
-    const nuevo = {...producto, id:Date.now()};
-    return this.productoLista.post(this.jsonUrl, nuevo);
+  listar(): Observable<Producto[]> {
+    return this.productos$;
   }
 
+  crear(producto: Producto): void {
+    const productosActuales = this.productosSubject.value;
+
+    const nuevo: Producto = {
+      ...producto,
+      id: Date.now()
+    };
+
+    this.productosSubject.next([
+      ...productosActuales,
+      nuevo
+    ]);
+  }
+
+  eliminar(id: number): void {
+    const productosActuales = this.productosSubject.value;
+
+    this.productosSubject.next(
+      productosActuales.filter(p => p.id !== id)
+    );
+  }
 }

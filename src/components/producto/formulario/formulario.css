@@ -1,0 +1,28 @@
+.formulario-producto {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+/* FILA HORIZONTAL */
+.fila-inputs {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: nowrap; /* clave para que no baje */
+}
+
+/* INPUTS en línea */
+.fila-inputs input {
+  width: 180px;  /* clave: evita que ocupen todo el ancho */
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* BOTÓN ABAJO */
+.fila-boton {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}

@@ -1,1 +1,31 @@
-<p>formulario works!</p>
+<div class="formulario-producto">
+
+  <div class="fila-inputs">
+    <input
+      type="text"
+      placeholder="Nombre"
+      [(ngModel)]="nuevoProducto.nombre">
+
+    <input
+      type="number"
+      placeholder="Precio"
+      [(ngModel)]="nuevoProducto.precio">
+
+    <input
+      type="number"
+      placeholder="Descuento"
+      [(ngModel)]="nuevoProducto.descuento">
+
+    <input
+      type="date"
+      [(ngModel)]="nuevoProducto.fecha_vencimiento">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="agregarProducto()">
+      Agregar
+    </button>
+  </div>
+
+</div>

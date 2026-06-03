@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../producto';
+import { DescuentoPipe } from '../../../pipes/descuento-pipe';
 
 
 import localeEsAr from '@angular/common/locales/es-AR';
@@ -19,7 +20,8 @@ registerLocaleData(localeEsAr, 'es-AR');
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    DescuentoPipe
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-AR' }
@@ -30,7 +32,7 @@ registerLocaleData(localeEsAr, 'es-AR');
 
 
 export class ListarProducto implements OnInit {
-  columnas: string[] = ['nombre', 'precio', 'descuento', 'vencimiento', 'acciones'];
+  columnas: string[] = ['nombre', 'precio', 'descuento', 'precioDescuento', 'vencimiento', 'acciones'];
   productos: Producto[] = [];
 
   constructor(

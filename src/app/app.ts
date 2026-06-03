@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { Registro } from '../components/registro/registro';
-import { ListarProducto } from '../components/producto/listar/listar';
-import { FormularioProducto } from '../components/producto/formulario/formulario';
+import { Registro } from './components/registro/registro';
+import { ListarProducto } from './components/producto/listar/listar';
+import { FormularioProducto } from './components/producto/formulario/formulario';
 
 
 @Component({

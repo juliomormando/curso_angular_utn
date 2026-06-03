@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+// 1. IMPORTANTE: Importamos las herramientas de formularios reactivos
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-
-import { Producto } from '../../../models/producto';
 import { ProductoService } from '../producto';
 
 @Component({
@@ -11,38 +12,63 @@ import { ProductoService } from '../producto';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatButtonModule
   ],
   templateUrl: './formulario.html',
   styleUrl: './formulario.css'
 })
-export class FormularioProducto {
+export class FormularioProducto implements OnInit {
 
-  nuevoProducto: Producto = {
-    id: 4,
-    nombre: 'Peras',
-    precio: 2.3,
-    descuento: 15,
-    fecha_vencimiento: new Date(2026, 6, 10),
-  };
+  // Declaramos la variable del formulario
+  formProducto!: FormGroup;
 
-  constructor(private productoSer: ProductoService) {}
+  // Inyectamos el FormBuilder en el constructor
+  constructor(
+    private fb: FormBuilder,
+    private productoSer: ProductoService
+  ) {}
 
-  agregarProducto(): void {
+  ngOnInit(): void {
+    // Inicializamos el formulario y sus validaciones
+    this.formProducto = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      precio: [null, [Validators.required, Validators.min(1)]],
+      descuento: [0, [Validators.min(0), Validators.max(100)]],
+      fecha_vencimiento: ['', Validators.required]
+    });
+  }
 
-    if (!this.nuevoProducto.nombre.trim()) {
+  // Creamos un "getter" para acortar el código del HTML al validar
+  get nombreControl() {
+    return this.formProducto.get('nombre');
+  }
+  get precioControl(){
+    return this.formProducto.get('precio');
+  }
+  get descuentoControl(){
+    return this.formProducto.get('descuento');
+  }
+  get fecha_vencimientoControl(){
+    return this.formProducto.get('fecha_vencimiento');
+  }
+
+  // Método que se ejecuta al enviar el formulario
+  guardar(): void {
+    if (this.formProducto.invalid) {
+      // Si el formulario no es válido, marcamos todos los campos como "tocados"
+      // para que aparezcan los errores en pantalla y no continúe
+      this.formProducto.markAllAsTouched();
       return;
     }
 
-    this.productoSer.crear(this.nuevoProducto);
+    // Si está todo bien, le enviamos los datos limpios al servicio
+    // formProducto.value ya tiene la forma del objeto Producto { nombre, precio, etc. }
+    this.productoSer.crear(this.formProducto.value);
 
-    this.nuevoProducto = {
-      id: 0,
-      nombre: '',
-      precio: 0,
-      descuento: 0,
-      fecha_vencimiento: new Date(2000, 0, 1),
-    };
+    // Opcional: Limpiamos el formulario para una nueva carga
+    this.formProducto.reset({ descuento: 0 });
   }
 }

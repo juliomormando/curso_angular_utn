@@ -1,28 +1,86 @@
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+  padding: 20px;
+}
+
 .formulario-producto {
-  margin-top: 20px;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  width: 100%;
 }
 
-/* FILA HORIZONTAL */
-.fila-inputs {
+/* El contenedor del formulario ahora se alinea en HORIZONTAL */
+form {
   display: flex;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: nowrap; /* clave para que no baje */
+  flex-direction: row;     /* Alinea los .form-group uno al lado del otro */
+  align-items: flex-start; /* Alinea todo arriba para que los errores no estiren los otros inputs */
+  gap: 1rem;               /* Espacio entre cada campo del formulario */
+  width: 100%;
+  flex-wrap: wrap;         /* Por si la pantalla es chica, los inputs bajan ordenadamente */
 }
 
-/* INPUTS en línea */
-.fila-inputs input {
-  width: 180px;  /* clave: evita que ocupen todo el ancho */
-  padding: 8px;
+/* Contenedor para la estructura de inputs y mensajes */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;                 /* Hace que todos los inputs tengan el mismo ancho proporcional */
+  min-width: 150px;        /* Evita que los inputs se aplasten demasiado en pantallas chicas */
+  position: relative;      /* Opcional: útil si querés posicionar errores en absoluto en el futuro */
+}
+
+/* Etiquetas de texto encima del input */
+label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Estilizado de los inputs */
+input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
 }
 
-/* BOTÓN ABAJO */
-.fila-boton {
-  margin-top: 15px;
+input:focus {
+  border-color: var(--vivid-pink, #6902d7);
+  outline: none;
+}
+
+/* Estilos para los mensajes de error */
+.error-mensaje {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Si hay más de un error, salen uno abajo del otro */
+}
+
+small {
+  color: #e53935;
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+}
+
+/* Ajustes para la validación visual */
+input.ng-invalid.ng-touched {
+  border-color: #e53935;
+}
+
+/* ESTILIZADO DEL BOTÓN (Ahora se alinea al final de la fila) */
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--gray-900, #1a1a1a);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 1.9rem; /* Compensación mágica: empuja el botón hacia abajo para alinearlo justo al nivel de los inputs y no de las etiquetas */
+  align-self: flex-start;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
 }

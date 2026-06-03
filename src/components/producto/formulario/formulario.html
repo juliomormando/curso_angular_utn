@@ -1,31 +1,47 @@
 <div class="formulario-producto">
+  <form [formGroup]="formProducto" (ngSubmit)="guardar()" class="formulario-container">
 
-  <div class="fila-inputs">
-    <input
-      type="text"
-      placeholder="Nombre"
-      [(ngModel)]="nuevoProducto.nombre">
+    <div class="form-group">
+      <label for="nombre">Producto *</label>
+      <input id="nombre" formControlName="nombre" placeholder="Ej: Alfajor de chocolate" />
 
-    <input
-      type="number"
-      placeholder="Precio"
-      [(ngModel)]="nuevoProducto.precio">
+      <div *ngIf="nombreControl?.invalid && nombreControl?.touched" class="error-mensaje">
+        <small *ngIf="nombreControl?.errors?.['required']">Este campo es obligatorio.</small>
+        <small *ngIf="nombreControl?.errors?.['minlength']">Ingrese al menos 3 caracteres.</small>
+      </div>
+    </div>
 
-    <input
-      type="number"
-      placeholder="Descuento"
-      [(ngModel)]="nuevoProducto.descuento">
+    <div class="form-group">
+      <label for="precio">Precio *</label>
+      <input id="precio" type="number" formControlName="precio" placeholder="0.00" />
 
-    <input
-      type="date"
-      [(ngModel)]="nuevoProducto.fecha_vencimiento">
+      <div *ngIf="precioControl?.invalid && precioControl?.touched" class="error-mensaje">
+        <small *ngIf="precioControl?.errors?.['required']">El precio es obligatorio.</small>
+        <small *ngIf="precioControl?.errors?.['min']">El precio debe ser mayor a 0.</small>
+      </div>
+    </div>
 
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="agregarProducto()">
-      Agregar
+    <div class="form-group">
+      <label for="descuento">Descuento (%)</label>
+      <input id="descuento" type="number" formControlName="descuento" placeholder="0" />
+
+      <div *ngIf="descuentoControl?.invalid && descuentoControl?.touched" class="error-mensaje">
+        <small *ngIf="descuentoControl?.errors?.['max']">El descuento no puede superar el 100%.</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fecha_vencimiento">Fecha de Vencimiento *</label>
+      <input id="fecha_vencimiento" type="date" formControlName="fecha_vencimiento" />
+
+      <div *ngIf="fecha_vencimientoControl?.invalid && fecha_vencimientoControl?.touched" class="error-mensaje">
+        <small *ngIf="fecha_vencimientoControl?.errors?.['required']">La fecha es obligatoria.</small>
+      </div>
+    </div>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="formProducto.invalid">
+      Guardar
     </button>
-  </div>
 
+  </form>
 </div>

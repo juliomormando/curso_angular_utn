@@ -24,6 +24,23 @@ Trabajo:
   - En la plantilla, incluir un título y un breve texto descriptivo sobre el formulario.
   - Implementación del formulario reactivo con FormBuilder y validaciones configuradas.
 
+Módulo 1 - Unidad 3.
+
+Objetivos: 
+  - Comprender el concepto de servicio en Angular y su utilidad para encapsular lógica de negocio.
+  - Crear servicios reutilizables utilizando Angular CLI y decoradores como @Injectable.
+  - Inyectar servicios en componentes utilizando el sistema de inyección de dependencias.
+  - Utilizar el módulo HttpClientModule para realizar peticiones HTTP desde servicios.
+  - Conectarse con APIs externas para obtener, enviar, modificar o eliminar datos.
+  - Implementar observables para gestionar respuestas asincrónicas desde la API.
+  - Manejar errores de red o de servidor mediante operadores de RxJS como catchError.
+  - Aplicar pipes estándar para transformar datos en plantillas de forma declarativa.
+  - Crear pipes personalizados utilizando la interfaz PipeTransform.
+  - Incorporar parámetros en pipes personalizados para ajustar su comportamiento dinámicamente.
+  - Diferenciar entre pipes puros e impuros, y determinar su aplicación según el contexto.
+  - Integrar servicios y pipes en una arquitectura coherente, escalable y mantenible.
+
+
 ---
 
 # Tecnologías utilizadas
@@ -111,7 +128,7 @@ En el archivo `app.component.ts` se creó una variable:
 
 ```typescript
 title = 'Mormando Julio';
-motivo = 'Me anote en el curso de Angular, para seguir capacitandome en nuevas tecnologias. Es un desafio grande para mi, dado que hace tiempo que no hago desarrollo de software.';
+motivo = 'Me anote en el curso de Angular....';
 ```
 
 Luego se mostró en la vista utilizando interpolación:
@@ -141,6 +158,9 @@ Luego se mostró en la vista utilizando interpolación:
 
 ![interpolación](screenshots/formulario_err.png)
 
+## Ejemplo del listado de datos 
+
+![interpolación](screenshots/listado.png)
 ---
 
 # Instrucciones para ejecutar el proyecto
@@ -181,7 +201,7 @@ http://localhost:4200/
 
 - Nombre: MORMANDO JULIO
 - Curso: Angular
-- Unidad: Módulo 1 - Unidad 1
+- Unidad: Módulo 1 - Unidad 1, 2, 3
 - Institución: CGP
 
 ---

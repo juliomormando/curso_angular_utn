@@ -1,3 +1,6 @@
+  .contenedor {
+    padding: 20px;
+  }
   /* El contenedor del formulario se alinea en vertical */
   form {
     display: flex;

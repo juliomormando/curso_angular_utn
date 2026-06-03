@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './registro.css',
 })
 export class Registro {
-  protected readonly title = signal('Formulario');
+  protected readonly title = signal('Registro');
   protected readonly descripcion = signal('Formulario de carga de datos.');
 
   formulario: FormGroup;

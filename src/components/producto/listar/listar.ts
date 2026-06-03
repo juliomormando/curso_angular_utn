@@ -1,4 +1,4 @@
-import { Component, OnInit, LOCALE_ID } from '@angular/core'; // <-- Asegurate de que esté acá
+import { Component, OnInit, LOCALE_ID, ChangeDetectorRef } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,10 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../producto';
 
-// 1. Importamos el paquete de datos regionales para Argentina
-import localeEsAr from '@angular/common/locales/es-AR';
 
-// 2. Registramos los datos del idioma
+import localeEsAr from '@angular/common/locales/es-AR';
 registerLocaleData(localeEsAr, 'es-AR');
 
 @Component({
@@ -24,7 +22,6 @@ registerLocaleData(localeEsAr, 'es-AR');
     FormsModule
   ],
   providers: [
-    // 3. Le decimos a Angular que use este idioma por defecto en todo el componente
     { provide: LOCALE_ID, useValue: 'es-AR' }
   ],
   templateUrl: './listar.html',
@@ -33,20 +30,26 @@ registerLocaleData(localeEsAr, 'es-AR');
 
 
 export class ListarProducto implements OnInit {
-  columnas: string[] = ['nombre', 'precio', 'descuento', 'vencimiento',  'acciones'];
+  columnas: string[] = ['nombre', 'precio', 'descuento', 'vencimiento', 'acciones'];
   productos: Producto[] = [];
 
-  constructor(private productoSer: ProductoService){}
+  constructor(
+    private productoSer: ProductoService,
+    private cdr: ChangeDetectorRef
+  ){}
 
   eliminarProducto(producto: Producto): void {
     this.productoSer.eliminar(producto.id);
   }
 
   ngOnInit(): void {
-    this.productoSer.cargarProductos();
-
     this.productoSer.listar().subscribe(data => {
       this.productos = data;
+      console.log('Datos recibidos en el componente:', data);
+
+      this.cdr.detectChanges();
     });
+
+    this.productoSer.cargarProductos();
   }
 }

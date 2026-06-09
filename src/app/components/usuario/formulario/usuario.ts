@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-registro',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './registro.html',
-  styleUrl: './registro.css',
+  templateUrl: './usuario.html',
+  styleUrl: './usuario.css',
 })
-export class Registro {
-  protected readonly title = signal('Registro');
+export class FormularioUsuario {
+  protected readonly title = signal('Nuevo');
   protected readonly descripcion = signal('Formulario de carga de datos.');
 
   formulario: FormGroup;

@@ -18,7 +18,12 @@ export const routes: Routes = [
     loadChildren: () => import('./components/producto/producto.module').then(m => m.ProductoModule)
   },
 
-  { path: '**', redirectTo: 'productos' } // Comodín por si escriben cualquier cosa
+  {
+    path: 'nuevo',
+    loadChildren: () => import('./components/usuario/usuario.module').then(m => m.UsuarioModule)
+  },
+
+  { path: '**', redirectTo: '' } // Comodín por si escriben cualquier cosa
 ];
 
 @NgModule({

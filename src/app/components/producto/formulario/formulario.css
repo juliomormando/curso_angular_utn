@@ -1,86 +1,102 @@
-/* CONTENEDOR PRINCIPAL */
-.contenedor {
-  padding: 20px;
-}
-
-.formulario-producto {
-  width: 100%;
-}
-
-/* El contenedor del formulario ahora se alinea en HORIZONTAL */
-form {
-  display: flex;
-  flex-direction: row;     /* Alinea los .form-group uno al lado del otro */
-  align-items: flex-start; /* Alinea todo arriba para que los errores no estiren los otros inputs */
-  gap: 1rem;               /* Espacio entre cada campo del formulario */
-  width: 100%;
-  flex-wrap: wrap;         /* Por si la pantalla es chica, los inputs bajan ordenadamente */
-}
-
-/* Contenedor para la estructura de inputs y mensajes */
-.form-group {
+/* Contenedor Principal del Formulario */
+.formulario-container {
+  max-width: 550px;
+  margin: 24px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 12px; /* Bordes ligeramente más redondeados */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  flex: 1;                 /* Hace que todos los inputs tengan el mismo ancho proporcional */
-  min-width: 150px;        /* Evita que los inputs se aplasten demasiado en pantallas chicas */
-  position: relative;      /* Opcional: útil si querés posicionar errores en absoluto en el futuro */
+  gap: 16px; /* Aumentamos el espacio vertical entre inputs */
 }
 
-/* Etiquetas de texto encima del input */
-label {
-  font-size: 0.9rem;
+/* Título del Formulario */
+h2 {
+  text-align: center;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #1a1a1a;
+  font-size: 26px;
   font-weight: 500;
-  color: #333;
+  margin-bottom: 12px;
 }
 
-/* Estilizado de los inputs */
-input {
+/* ==========================================
+   ESTILIZACIÓN AVANZADA DE INPUTS (Material)
+   ========================================== */
+.full-width {
   width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 
-input:focus {
-  border-color: var(--vivid-pink, #6902d7);
-  outline: none;
+/* Cambia el color de fondo sutil cuando el input no está enfocado */
+::v-deep .mat-mdc-text-field-wrapper {
+  background-color: #f8f9fa !important;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Estilos para los mensajes de error */
-.error-mensaje {
+/* Efecto de elevación e iluminación al hacer foco en el input */
+::v-deep .mat-mdc-form-field-focus-tracked .mat-mdc-text-field-wrapper {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.15); /* Efecto de brillo exterior azul */
+}
+
+/* Redondeado moderno para los bordes del Outline */
+::v-deep .mdc-notched-outline__leading,
+::v-deep .mdc-notched-outline__notch,
+::v-deep .mdc-notched-outline__trailing {
+  border-radius: 8px !important;
+}
+
+/* Color y grosor del borde en estado normal */
+::v-deep .mdc-notched-outline * {
+  border-color: #e0e0e0 !important;
+}
+
+/* Color del borde cuando pasamos el cursor por encima (Hover) */
+::v-deep .mat-mdc-form-field:hover .mdc-notched-outline * {
+  border-color: #b0bec5 !important;
+}
+
+/* ==========================================
+   BOTONES Y ESPACIADO INFERIOR
+   ========================================== */
+.botones-container {
   display: flex;
-  flex-direction: column; /* Si hay más de un error, salen uno abajo del otro */
+  justify-content: flex-end; /* Fuerza la ubicación absoluta a la derecha */
+  gap: 16px;                 /* Mayor separación entre Guardar y Cancelar */
+  margin-top: 36px;          /* Generoso espacio de separación con el último input */
+  padding-top: 24px;         /* Espacio interno arriba de la línea divisoria */
+  border-top: 1px solid #eaeaea;
 }
 
-small {
-  color: #e53935;
-  font-size: 0.8rem;
-  margin-top: 0.1rem;
+/* Estilización específica de botones */
+.botones-container button[type="submit"] {
+  padding: 0 24px;
+  height: 42px;
+  font-weight: 500;
+  border-radius: 8px; /* Botón guardar redondeado en sintonía con los inputs */
 }
 
-/* Ajustes para la validación visual */
-input.ng-invalid.ng-touched {
-  border-color: #e53935;
+.botones-container button[type="button"] {
+  height: 42px;
+  font-weight: 500;
+  color: #666666;
+  border-radius: 8px;
 }
 
-/* ESTILIZADO DEL BOTÓN (Ahora se alinea al final de la fila) */
-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  background-color: var(--gray-900, #1a1a1a);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  margin-top: 1.9rem; /* Compensación mágica: empuja el botón hacia abajo para alinearlo justo al nivel de los inputs y no de las etiquetas */
-  align-self: flex-start;
-}
+/* Diseño Adaptativo para Celulares */
+@media (max-width: 600px) {
+  .formulario-container {
+    margin: 16px;
+    padding: 24px;
+  }
 
-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+  .botones-container {
+    margin-top: 24px;
+    flex-direction: column; /* En móviles se apilan para mejor usabilidad táctil */
+  }
+
+  .botones-container button {
+    width: 100%;
+  }
 }

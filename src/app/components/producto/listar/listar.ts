@@ -1,33 +1,31 @@
-import { Component, OnInit, LOCALE_ID, ChangeDetectorRef } from '@angular/core';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <-- Clave para el @if y pipes comunes
+import { RouterModule } from '@angular/router'; // <-- Clave para que funcione el [routerLink]
+import { FormsModule } from '@angular/forms';
+
+// Importaciones de Angular Material específicas para esta pantalla
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon'; // <-- ¡ACÁ ESTÁ LA SOLUCIÓN!
+
 import { Producto } from '../../../models/producto';
-import { ProductoService } from '../producto';
+import { ProductoService } from '../producto.service';
 import { DescuentoPipe } from '../../../pipes/descuento-pipe';
-
-
-import localeEsAr from '@angular/common/locales/es-AR';
-registerLocaleData(localeEsAr, 'es-AR');
 
 @Component({
   selector: 'app-listar',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    FormsModule,
-    DescuentoPipe
-  ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es-AR' }
-  ],
   templateUrl: './listar.html',
   styleUrl: './listar.css',
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule, // <-- Se lo inyectamos directamente en la vena al componente
+    DescuentoPipe
+  ]
 })
 
 
@@ -37,21 +35,21 @@ export class ListarProducto implements OnInit {
 
   constructor(
     private productoSer: ProductoService,
-    private cdr: ChangeDetectorRef
   ){}
 
-  eliminarProducto(producto: Producto): void {
-    this.productoSer.eliminar(producto.id);
+  ngOnInit(): void {
+    this.productoSer.listar().subscribe({
+      next: (data) => {
+        this.productos = data;
+        console.log('Datos recibidos en el componente:', data);
+      },
+      error: (err) => console.error('Error al recibir productos en el componente', err)
+    });
   }
 
-  ngOnInit(): void {
-    this.productoSer.listar().subscribe(data => {
-      this.productos = data;
-      console.log('Datos recibidos en el componente:', data);
-
-      this.cdr.detectChanges();
-    });
-
-    this.productoSer.cargarProductos();
+  eliminarProducto(producto: Producto): void {
+    if (confirm(`¿Estás seguro de eliminar ${producto.nombre}?`)) {
+      this.productoSer.eliminar(producto.id);
+    }
   }
 }

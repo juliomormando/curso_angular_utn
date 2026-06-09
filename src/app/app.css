@@ -1,113 +1,44 @@
-  :host {
-    --gray-900: oklch(19.37% 0.006 300.98);
-    --gray-700: oklch(36.98% 0.014 302.71);
+/* Estilos globales y compartidos */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f8fafc; /* Fondo gris-azulado sutil para todas las pantallas */
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-    --orange-red: oklch(63.32% 0.24 31.68);
-    --vivid-pink: oklch(69.02% 0.277 332.77);
-    --electric-violet: oklch(53.18% 0.28 296.97);
+:root {
+  --primary-color: #3f51b5; /* El azul de Angular Material */
+}
 
-    --gradient-vertical: linear-gradient(
-      180deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
+.bg-primary {
+  background-color: var(--primary-color);
+}
 
-    --gradient-horizontal: linear-gradient(
-      90deg,
-      var(--orange-red) 0%,
-      var(--vivid-pink) 50%,
-      var(--electric-violet) 100%
-    );
+.mat-icon {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+}
 
-    font-family: "Inter", -apple-system, sans-serif;
-    box-sizing: border-box;
-    display: block;
-    height: 100dvh;
+.contenedor-principal {
+  width: 50%;          /* Ocupa el 50% del ancho de la pantalla */
+  margin-left: auto;   /* Centra horizontalmente */
+  margin-right: auto;  /* Centra horizontalmente */
+}
+
+/* Opcional: Hace que ocupe más espacio en pantallas de celulares */
+@media (max-width: 768px) {
+  .contenedor-principal {
+    width: 90%;
   }
-
-  ------------
-  html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .main {
-    width: 100%;
-    min-height: 100vh;
-  }
-
-  .contenedor {
-    display: flex;
-    width: 100%;
-    min-height: 100vh;
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  /* columnas ocupando espacio real */
-  .left-side {
-    flex: 1;
-  }
-
-  .medium-side {
-    flex: 1;
-  }
-
-  .right-side {
-    flex: 2;
-  }
-
-  /* opcional: separadores más visibles */
-  .divider {
-    width: 2px;
-    background: #ddd;
-  }
-  -------------
-  main {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    justify-content: center; /* Centrado para mejor estética */
-    align-items: center;
-    padding: 2rem;
-    box-sizing: inherit;
-  }
-
-
-
-  h1 {
-    font-size: 2.5rem;
-    color: var(--gray-900);
-    font-weight: 500;
-    margin: 1.5rem 0 0 0;
-  }
-
-  p {
-    margin: 0 0 1rem 0;
-    color: var(--gray-700);
-  }
-
-
-
-  /* Adaptación para pantallas móviles */
-  @media screen and (max-width: 650px) {
-    .content {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .left-side, .right-side {
-      width: 100%;
-    }
-
-    .divider {
-      height: 2px;
-      width: 100%;
-      background: var(--gradient-horizontal);
-      margin-block: 1.5rem;
-    }
-  }
+}
+.titulo-principal {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #222222;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-family: sans-serif; /* Puedes cambiarla por la fuente de tu proyecto */
+}

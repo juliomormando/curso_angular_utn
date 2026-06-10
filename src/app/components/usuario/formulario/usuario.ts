@@ -1,10 +1,21 @@
 import { Component, signal } from '@angular/core';
-import {ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-registro',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule,
+      CommonModule,
+      RouterModule,
+      FormsModule,
+      MatTableModule,
+      MatButtonModule,
+      MatIconModule, // <-- Se lo inyectamos directamente en la vena al componente
+    ],
   templateUrl: './usuario.html',
   styleUrl: './usuario.css',
 })

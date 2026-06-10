@@ -16,12 +16,13 @@
   font-weight: 500;
   color: #333333;
   margin: 0;
+  columns: 3;
 }
 
 .barra-acciones {
   margin-bottom: 24px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 /* Tabla Angular Material Personalizada */

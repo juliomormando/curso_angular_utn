@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormularioUsuario } from './formulario/usuario';
 
 const routes: Routes = [
-  { path: 'nuevo', component: FormularioUsuario },          // Ruta: /productos/nuevo
+  { path: '', component: FormularioUsuario },          // Ruta: /productos/
   { path: 'editar/:id', component: FormularioUsuario }      // Ruta dinámica: /productos/editar/5
 ];
 

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Carlos",
+    "email": "unmail@mail.com",
+    "descripcion": "Soy Carlos y tengo un mail"
+  },
+  {
+    "id": 1,
+    "nombre": "Josefa",
+    "email": "Josefa@mail.com",
+    "descripcion": "Soy Josefa, escritora publica"
+  },
+  {
+    "id": 1,
+    "nombre": "Marcos",
+    "email": "Marcos@mail.com",
+    "descripcion": "Soy Marcos y tengo un negocio"
+  }
+]

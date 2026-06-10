@@ -19,7 +19,7 @@ export const routes: Routes = [
   },
 
   {
-    path: 'nuevo',
+    path: 'usuario',
     loadChildren: () => import('./components/usuario/usuario.module').then(m => m.UsuarioModule)
   },
 

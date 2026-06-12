@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Home } from './components/home/home';
 
 export const routes: Routes = [
+
   // 1. Cuando la URL esté vacía, carga el componente Home con las 2 tarjetas
   { path: '', component: Home },
 
@@ -27,7 +28,9 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], // forRoot solo se usa en el módulo raíz
+  // Se agrega { useHash: true } como segundo argumento para activar las rutas con '#'
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
